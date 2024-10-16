@@ -10,11 +10,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -27,14 +22,14 @@ Your app is ready to be deployed!
 
 Builds the app and deployes on gh-pages branch. In a few minutes the app can be checked on github.io link.
 
-## Steps to deploy
+## Steps for deployin the application
 
-After work is done commit the work on main branch.
+In this project [github pages](https://docs.github.com/en/pages) is configured for deploying the website.
 
-### `git add .`
-### `git coomit -m ""`
-### `git push`
+For a new deploy the following commands need to be used:
 
-Then build and deploy.
+`npm run build`
+`npm run deploy`
 
-### `npm run deploy`
+After a few minutes the changes should be available in the online version of the website:
+[https://ringaro-software.github.io/landing-page/](https://ringaro-software.github.io/landing-page/)
