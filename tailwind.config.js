@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -5,8 +7,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'instrument-sans': ['"Instrument Sans"', defaultTheme.fontFamily.sans],
+        'roboto': ['"Roboto"', defaultTheme.fontFamily.sans],
+      }
+    },
   },
   plugins: [],
 }
-
