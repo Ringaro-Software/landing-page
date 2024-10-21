@@ -2,7 +2,7 @@
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -20,9 +20,9 @@ Your app is ready to be deployed!
 
 ### `npm run deploy`
 
-Builds the app and deployes on gh-pages branch. In a few minutes the app can be checked on github.io link.
+Builds the app and deploys on gh-pages branch. In a few minutes the app can be checked on github.io link.
 
-## Steps for deployin the application
+## Steps for deploying the application
 
 In this project [github pages](https://docs.github.com/en/pages) is configured for deploying the website.
 
