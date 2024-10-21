@@ -3,11 +3,11 @@ import logo from '../../assets/black_logo.png';
 
 export const LandingPage: FC = () => {
   return (
-    <div className="App">
-      <header>
+    <div>
+      <header className="flex justify-center">
         <img
           src={logo}
-          className="App-logo"
+          className="max-h-80"
           alt="logo"
         />
       </header>
