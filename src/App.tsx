@@ -1,17 +1,8 @@
 import { type FC } from 'react';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import logo from './assets/black_logo.png';
+import { router } from './config/router';
 
 export const App: FC = () => {
-  return (
-    <div className="App">
-      <header>
-        <img
-          src={logo}
-          className="App-logo"
-          alt="logo"
-        />
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
