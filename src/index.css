@@ -5,7 +5,24 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  :root {
+    --appBarHeight: 60px;
+    --layoutMaxWidth: 1440px;
+    --layoutPaddingX: 40px;
+
     font-family: 'Instrument Sans', 'Roboto', sans-serif, 'Helvetica', 'Arial', 'Verdana';
+    scroll-snap-type: y mandatory;
+  }
+
+  @media screen(md) {
+    :root {
+      --appBarHeight: 126px;
+    }
+  }
+
+  @media screen(lg) {
+    :root {
+      --layoutPaddingX: 74px;
+    }
   }
 }

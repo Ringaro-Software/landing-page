@@ -1,4 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
+import { LIGHT_GRAY } from './src/constants';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,6 +12,9 @@ export default {
       fontFamily: {
         'instrument-sans': ['"Instrument Sans"', defaultTheme.fontFamily.sans],
         'roboto': ['"Roboto"', defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        'light-gray': LIGHT_GRAY
       }
     },
   },
