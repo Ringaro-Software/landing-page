@@ -1,6 +1,5 @@
 import type { ClassValue } from 'clsx';
 import { useState, type FC } from 'react';
-import icon from '../../../assets/icons/sort-down-gray.png';
 import { SectionId } from '../../../types/section-id';
 import { cn } from '../../../utils';
 import { AppBarItemLabel } from '../app-bar-item-label';
@@ -15,29 +14,24 @@ export const AppBarMobileItemAboutUs: FC<AppBarMobileItemAboutUsProps> = ({ onMe
   const toggleOpen = () => setOpen((prev) => !prev);
 
   return (
-    <div className="flex w-full flex-col items-center px-6">
+    <div className="flex w-full flex-col">
       <AppBarItemLabel
-        className="flex gap-2 px-4 text-light-gray"
+        className="flex items-center justify-between gap-2 px-4 py-2.5 text-sm text-gray-700 font-medium transition-all hover:bg-white/60 rounded-2xl"
         onClick={toggleOpen}
       >
         About us
-        <img
-          src={icon}
-          className={cn({
-            'rotate-180 transition-transform': open,
-          })}
-        />
+        <svg className={cn('w-3.5 h-3.5 transition-transform', { 'rotate-180': open })} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+        </svg>
       </AppBarItemLabel>
       {open && (
-        <div className="flex flex-col pl-[30%]">
+        <div className="flex flex-col ml-4 mt-1 bg-white/40 rounded-2xl p-1">
           <AboutUsSubMenuItem
             label="Our process"
-            className="border-b border-light-gray"
             onClick={() => onMenuItemClick(SectionId.OurProcess)}
           />
           <AboutUsSubMenuItem
             label="What we offer"
-            className="border-b border-light-gray"
             onClick={() => onMenuItemClick(SectionId.OurTechStack)}
           />
           <AboutUsSubMenuItem
@@ -59,7 +53,10 @@ interface AboutUsSubMenuItemProps {
 const AboutUsSubMenuItem: FC<AboutUsSubMenuItemProps> = ({ label, className, onClick }) => {
   return (
     <span
-      className={cn('cursor-pointer py-2 text-light-gray', className)}
+      className={cn(
+        'cursor-pointer px-3 py-2 text-gray-600 text-xs transition-all hover:bg-white/60 rounded-xl',
+        className
+      )}
       onClick={onClick}
     >
       {label}

@@ -11,7 +11,18 @@
     --layoutPaddingX: 40px;
 
     font-family: 'Instrument Sans', 'Roboto', sans-serif, 'Helvetica', 'Arial', 'Verdana';
-    scroll-snap-type: y mandatory;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
   }
 
   @media screen(md) {

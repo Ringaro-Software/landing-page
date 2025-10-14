@@ -17,7 +17,12 @@ export const AppBarDesktopItem: FC<AppBarDesktopItemProps> = ({ sectionId, label
 
   return (
     <AppBarItemLabel
-      className={cn('hover:underline', isSelected ? 'text-light-gray' : 'text-white')}
+      className={cn(
+        'px-4 py-2 text-sm font-medium transition-all cursor-pointer rounded-full hover:-translate-y-0.5',
+        isSelected
+          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
+          : 'text-gray-700 hover:bg-white/70 hover:text-gray-900 hover:shadow-sm'
+      )}
       onClick={() => goToSection(sectionId)}
     >
       {label}

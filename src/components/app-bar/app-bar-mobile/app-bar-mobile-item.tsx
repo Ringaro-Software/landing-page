@@ -14,7 +14,10 @@ export interface AppBarMobileItemProps {
 export const AppBarMobileItem: FC<AppBarMobileItemProps> = ({ sectionId, label, className, onMenuItemClick }) => {
   return (
     <AppBarItemLabel
-      className={cn('px-4 text-light-gray hover:underline', className)}
+      className={cn(
+        'px-4 py-2.5 text-sm text-gray-700 font-medium transition-all hover:bg-white/60 rounded-2xl',
+        className
+      )}
       onClick={() => onMenuItemClick(sectionId)}
     >
       {label}

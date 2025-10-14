@@ -1,7 +1,9 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig, loadEnv } from 'vite';
 
-declare var process: any;
+declare const process: {
+  cwd(): string;
+};
 
 const DEFAULT_BASE_URL = '/landing-page/';
 const DEFAULT_PORT = 3000;

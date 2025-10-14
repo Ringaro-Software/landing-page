@@ -1,7 +1,5 @@
 import type { ClassValue } from 'clsx';
 import { forwardRef, useRef, useState, type FC } from 'react';
-import iconGray from '../../../assets/icons/sort-down-gray.png';
-import iconWhite from '../../../assets/icons/sort-down-white.png';
 import { useClickOutside } from '../../../hooks';
 import { useCurrentSectionId, useGoToSection } from '../../../hooks/section';
 import { SectionId } from '../../../types/section-id';
@@ -28,16 +26,18 @@ export const AppBarDesktopItemAboutUs: FC = () => {
     <div className="relative flex flex-col justify-center self-stretch">
       <AppBarItemLabel
         ref={containerRef}
-        className={cn('flex gap-2', isSelected ? 'text-light-gray' : 'text-white')}
+        className={cn(
+          'flex items-center gap-1 px-4 py-2 text-sm font-medium transition-all cursor-pointer rounded-full',
+          isSelected
+            ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
+            : 'text-gray-700 hover:bg-white/70 hover:text-gray-900'
+        )}
         onClick={toggleOpen}
       >
         About us
-        <img
-          src={isSelected ? iconGray : iconWhite}
-          className={cn({
-            'rotate-180 transition-transform': open,
-          })}
-        />
+        <svg className={cn('w-3.5 h-3.5 transition-transform', { 'rotate-180': open })} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+        </svg>
       </AppBarItemLabel>
       {open && (
         <AboutUsMenuDropdown
@@ -60,18 +60,16 @@ const AboutUsMenuDropdown = forwardRef<
   return (
     <div
       ref={ref}
-      className="absolute left-1/2 top-[var(--appBarHeight)] flex -translate-x-1/2 flex-col items-stretch whitespace-nowrap bg-black bg-opacity-70"
+      className="absolute left-1/2 top-full -translate-x-1/2 flex flex-col items-stretch whitespace-nowrap bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-100/50 mt-2 overflow-hidden p-1"
     >
       <AboutUsMenuDropdownItem
         label="Our process"
         isSelected={currentSectionId === SectionId.OurProcess}
-        className="border-b border-light-gray"
         onClick={() => onItemClick(SectionId.OurProcess)}
       />
       <AboutUsMenuDropdownItem
         label="What we offer"
         isSelected={currentSectionId === SectionId.OurTechStack}
-        className="border-b border-light-gray"
         onClick={() => onItemClick(SectionId.OurTechStack)}
       />
       <AboutUsMenuDropdownItem
@@ -94,8 +92,10 @@ const AboutUsMenuDropdownItem: FC<AboutUsMenuDropdownItemProps> = ({ label, isSe
   return (
     <span
       className={cn(
-        'cursor-pointer px-6 py-2 text-center text-white',
-        isSelected ? 'text-light-gray' : 'text-white',
+        'cursor-pointer px-4 py-2 text-sm text-center font-medium transition-all rounded-xl',
+        isSelected
+          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+          : 'text-gray-700 hover:bg-gray-100',
         className
       )}
       onClick={onClick}

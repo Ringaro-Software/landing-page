@@ -1,41 +1,18 @@
-import { useEffect, type FC } from 'react';
-import { AppBar, HeroSection, OurStoriesSection } from '../../components';
-import { useGoToSection } from '../../hooks/section';
-import { SectionId } from '../../types/section-id';
+import { type FC } from 'react';
+import { AppBar, HeroSection, OurMissionSection, AboutUsSection, OurStoriesSection, ContactSection, Footer } from '../../components';
 
 export const LandingPage: FC = () => {
-  const goToSection = useGoToSection();
-
-  const handleScrollend = () => {
-    const sectionIdInViewport = Object.values(SectionId).find((sectionId) =>
-      isElementInViewport(document.getElementById(sectionId))
-    );
-
-    if (sectionIdInViewport) {
-      goToSection(sectionIdInViewport);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('scrollend', handleScrollend);
-
-    return () => document.removeEventListener('scrollend', handleScrollend);
-  }, []);
-
   return (
-    <div className="flex flex-col items-center justify-start">
+    <div className="min-h-screen flex flex-col">
       <AppBar />
-      <HeroSection />
-      <OurStoriesSection />
+      <main className="flex-1">
+        <HeroSection />
+        <OurMissionSection />
+        <AboutUsSection />
+        <OurStoriesSection />
+        <ContactSection />
+      </main>
+      <Footer />
     </div>
   );
-};
-
-const isElementInViewport = (element?: HTMLElement | null) => {
-  if (!element) {
-    return false;
-  }
-
-  const rect = element.getBoundingClientRect();
-  return rect.top > 0 && rect.top < (window.innerHeight || document.documentElement.clientHeight);
 };
