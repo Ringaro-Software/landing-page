@@ -9,8 +9,8 @@ const portfolioProjects = [
     clientLogo: 'https://marsapp.ai/images/logo.png',
     isComposite: true,
     description: 'Complete fleet management and freight marketplace connecting carriers with shippers for any cargo size across Europe.',
-    technologies: ['React', 'NestJS', 'AWS', 'Docker', 'AI/ML'],
-    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
+    technologies: ['React', 'NestJS', 'AWS', 'Docker', 'AI/ML', 'AI Agent'],
+    image: '/landing-page/images/logos/mars.png',
     fullDescription: 'Handled the complete development of M.A.R.S. (Management Application For Route Strategy), an AI-powered digital platform revolutionizing freight transportation across Europe. Working from existing designs, we built the entire system handling everything from small courier packages to full truckloads, featuring automated freight matching through SPOT platform, AI-driven route optimization, and comprehensive fleet management tools. Trucks of all sizes can register, find cargo, bid on freight requests, and manage deliveries through dedicated mobile apps.',
     challenge: 'European logistics companies struggled with fragmented systems for different cargo types, inefficient route planning, and poor fleet utilization. Small shipments were unprofitable due to manual coordination, while carriers had empty return trips, wasting fuel and time.',
     solution: 'Built a unified cloud-based marketplace with AI-powered algorithms that intelligently match shipments with suitable vehicles based on size, route, timing, and pricing. Implemented real-time driver communication, digital proof of delivery, automated invoicing, transparent carrier ratings, and fleet analytics dashboard. Integrated both courier services and freight exchange on one platform, supporting all vehicle types from vans to heavy-duty trucks.',
@@ -22,7 +22,7 @@ const portfolioProjects = [
     clientLogo: 'https://ja-ic.com/assets/img/Portfolio/MyLODGE_logo_PNG.png',
     description: 'Ultra-modern tiny house booking platform connecting travelers with sustainable nature getaways across Europe.',
     technologies: ['Astro', 'NestJS', 'PostgreSQL', 'Flutter', 'IoT'],
-    image: 'https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=600&h=400&fit=crop',
+    image: '/landing-page/images/logos/MYLODGE.jpg',
     fullDescription: 'Designed and developed MyLodge from the ground up, a startup reimagining tourism with ultra-modern and posh tiny house sites across Europe. We handled the complete end-to-end delivery including UI/UX design, platform development, and implementation. The platform connects discerning travelers with beautifully designed tiny house getaways in nature\'s best hideouts while enabling landowners to monetize their property. Features mobile apps for iOS and Android, smart lock integration for contactless check-in, booking management, and a profit-sharing model that supports local communities. Built with a focus on premiumness, sustainability, and digital innovation.',
     challenge: 'Traditional vacation rentals lacked sustainable, design-forward tiny house options while landowners with beautiful natural properties had no easy way to monetize their space. Travelers seeking unique, responsible travel experiences struggled to find premium tiny house accommodations that combined luxury with sustainability.',
     solution: 'Built a comprehensive digital platform and mobile apps that connect travelers with a curated network of premium tiny houses across Europe. Implemented IoT integration for smart locks enabling contactless check-in, created a profit-sharing model for landowners, developed booking and property management tools, and established a brand focused on premiumness and sustainability. Added features for discovering nature hideouts and supporting local communities.',
@@ -33,8 +33,8 @@ const portfolioProjects = [
     clientName: 'Carbonify',
     clientLogo: 'https://carbonify-prod-tc-asset-uploads.s3-eu-central-1.amazonaws.com/carbonify/carbonify.svg',
     description: 'Digital platform enabling electric vehicle owners to monetize their environmental impact through THG quota trading.',
-    technologies: ['React', 'Next.js', 'TypeScript', 'AWS'],
-    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&h=400&fit=crop',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'AWS'],
+    image: '/landing-page/images/logos/carbonify.png',
     fullDescription: 'Collaborated with Carbonify\'s internal team to deliver Germany\'s leading THG (greenhouse gas) quota trading platform that simplifies the process for electric vehicle owners to claim and sell their environmental certificates. We provided development support and technical expertise to help bring their vision to life. The platform features automated document processing, flexible payout options, and real-time quota valuation. Processes over 300,000 THG quotas annually with guaranteed payouts.',
     challenge: 'Electric vehicle owners faced complex bureaucracy and lengthy processes to claim their THG quota premiums. The manual application process deterred many from accessing their rightful environmental incentives, leaving money on the table.',
     solution: 'Built an intuitive web platform with streamlined registration, automated document verification, and instant premium calculations. Implemented multiple payout tiers (Express and Standard), integrated with government databases for verification, and created a transparent tracking system. Added multilingual support and responsive design for mobile access.',
@@ -45,8 +45,8 @@ const portfolioProjects = [
     clientName: 'Spectrum',
     clientLogo: null,
     description: 'An AI-powered app that uses DNA reports and generates personalized meal plans and supplement plans based on your body composition and DNA results reports.',
-    technologies: ['Astro', 'Node.js', 'Python', 'AI/ML'],
-    image: 'https://www.shutterstock.com/image-photo/spiral-dna-double-helix-structure-260nw-2542543097.jpg',
+    technologies: ['Astro', 'Node.js', 'Python', 'AI/ML', 'AI Agent'],
+    image: '/landing-page/images/logos/spectrum.png',
     fullDescription: 'Designed and developed Spectrum from concept to launch, a personalized nutrition and wellness platform that analyzes DNA test results and body composition data to create customized meal plans and supplement recommendations. We handled the complete design and development process, creating an intuitive user experience and robust technical architecture. The platform uses advanced algorithms to interpret genetic markers and translate them into actionable health insights.',
     challenge: 'Traditional nutrition advice is generic and doesn\'t account for individual genetic differences. Users struggle to understand DNA reports and translate them into practical dietary changes.',
     solution: 'Built an intelligent platform that processes DNA reports and body composition data, using AI to generate personalized meal plans and supplement recommendations. Implemented an intuitive interface that explains genetic insights in simple terms and provides actionable nutrition guidance.',
@@ -60,15 +60,15 @@ const partners = [
   { name: 'MyLodge', logo: 'https://ja-ic.com/assets/img/Portfolio/MyLODGE_logo_PNG.png', isComposite: false, isText: false },
   { name: 'Carbonify', logo: 'https://carbonify-prod-tc-asset-uploads.s3-eu-central-1.amazonaws.com/carbonify/carbonify.svg', isComposite: false, isText: false },
   { name: 'Spectrum', logo: null, isComposite: false, isText: true },
-  { name: 'Thinslices', logo: '/landing-page/images/logos/thinslices-logo.png', isComposite: false, isText: false },
   { name: 'BogoExpress', logo: 'https://www.bogoexpress.ro/logo.svg', isComposite: false, isText: false },
+  { name: 'Thinslices', logo: '/landing-page/images/logos/thinslices-logo.png', isComposite: false, isText: false },
   { name: 'JA-IC', logo: 'https://ja-ic.com/assets/img/jaicalt.png', isComposite: false, isText: false },
   { name: 'M.A.R.S.', logo: 'https://marsapp.ai/images/logo.png', isComposite: true, isText: false },
   { name: 'MyLodge', logo: 'https://ja-ic.com/assets/img/Portfolio/MyLODGE_logo_PNG.png', isComposite: false, isText: false },
   { name: 'Carbonify', logo: 'https://carbonify-prod-tc-asset-uploads.s3-eu-central-1.amazonaws.com/carbonify/carbonify.svg', isComposite: false, isText: false },
   { name: 'Spectrum', logo: null, isComposite: false, isText: true },
-  { name: 'Thinslices', logo: '/landing-page/images/logos/thinslices-logo.png', isComposite: false, isText: false },
   { name: 'BogoExpress', logo: 'https://www.bogoexpress.ro/logo.svg', isComposite: false, isText: false },
+  { name: 'Thinslices', logo: '/landing-page/images/logos/thinslices-logo.png', isComposite: false, isText: false },
   { name: 'JA-IC', logo: 'https://ja-ic.com/assets/img/jaicalt.png', isComposite: false, isText: false },
 ];
 
@@ -210,11 +210,11 @@ export const OurStoriesSection: FC = () => {
             </button>
 
             {/* Project Image */}
-            <div className="relative h-80 bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
+            <div className="relative h-[600px] bg-white overflow-hidden flex items-center justify-center p-8">
               <img
                 src={portfolioProjects[selectedProject].image}
                 alt={portfolioProjects[selectedProject].title}
-                className="w-full h-full object-cover"
+                className="max-w-full max-h-full object-contain"
               />
             </div>
 

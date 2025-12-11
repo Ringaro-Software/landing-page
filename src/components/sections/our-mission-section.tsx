@@ -29,15 +29,15 @@ export const OurMissionSection: FC = () => {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl bg-white p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer">
-              <div className="mb-2 text-3xl font-bold text-blue-600">2M+</div>
-              <div className="text-gray-700 text-sm font-medium">Lines of Code Written</div>
+              <div className="mb-2 text-3xl font-bold text-blue-600">10+</div>
+              <div className="text-gray-700 text-sm font-medium">Industries Served</div>
             </div>
             <div className="rounded-2xl bg-white p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="mb-2 text-3xl font-bold text-green-600">20+</div>
               <div className="text-gray-700 text-sm font-medium">Happy Clients</div>
             </div>
             <div className="rounded-2xl bg-white p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer">
-              <div className="mb-2 text-3xl font-bold text-purple-600">4+</div>
+              <div className="mb-2 text-3xl font-bold text-purple-600">5+</div>
               <div className="text-gray-700 text-sm font-medium">Years Experience</div>
             </div>
             <div className="rounded-2xl bg-white p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer">

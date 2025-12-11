@@ -1,4 +1,4 @@
-import { type FC, useState, FormEvent } from 'react';
+import { type FC, useState, FormEvent, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon, LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -25,6 +25,9 @@ const londonCoords: LatLngTuple = [51.5074, -0.1278];
 const timisoaraCoords: LatLngTuple = [45.7494, 21.2290];
 const center: LatLngTuple = [48.5, 10.5]; // Centered between the two cities
 
+const RATE_LIMIT_KEY = 'contact_form_last_submit';
+const RATE_LIMIT_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+
 export const ContactSection: FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -32,11 +35,44 @@ export const ContactSection: FC = () => {
     email: '',
     company: '',
     projectType: '',
-    message: ''
+    message: '',
+    honeypot: '' // Honeypot field
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'rate-limit'>('idle');
   const [showStatusMessage, setShowStatusMessage] = useState(false);
+  const [canSubmit, setCanSubmit] = useState(true);
+  const [timeRemaining, setTimeRemaining] = useState(0);
+
+  // Check rate limit on mount and set up timer
+  useEffect(() => {
+    const checkRateLimit = () => {
+      const lastSubmit = localStorage.getItem(RATE_LIMIT_KEY);
+      if (lastSubmit) {
+        const timeSinceLastSubmit = Date.now() - parseInt(lastSubmit);
+        if (timeSinceLastSubmit < RATE_LIMIT_DURATION) {
+          setCanSubmit(false);
+          setTimeRemaining(Math.ceil((RATE_LIMIT_DURATION - timeSinceLastSubmit) / 1000));
+        }
+      }
+    };
+
+    checkRateLimit();
+    const interval = setInterval(() => {
+      const lastSubmit = localStorage.getItem(RATE_LIMIT_KEY);
+      if (lastSubmit) {
+        const timeSinceLastSubmit = Date.now() - parseInt(lastSubmit);
+        if (timeSinceLastSubmit < RATE_LIMIT_DURATION) {
+          setTimeRemaining(Math.ceil((RATE_LIMIT_DURATION - timeSinceLastSubmit) / 1000));
+        } else {
+          setCanSubmit(true);
+          setTimeRemaining(0);
+        }
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,7 +80,26 @@ export const ContactSection: FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // EmailJS configuration - replace these with your actual values from emailjs.com
+      // Check honeypot field (should be empty)
+      if (formData.honeypot) {
+        console.log('Bot detected - honeypot filled');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Check rate limit
+      if (!canSubmit) {
+        setSubmitStatus('rate-limit');
+        setShowStatusMessage(true);
+        setIsSubmitting(false);
+        setTimeout(() => {
+          setShowStatusMessage(false);
+          setSubmitStatus('idle');
+        }, 5000);
+        return;
+      }
+
+      // EmailJS configuration
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
@@ -55,10 +110,15 @@ export const ContactSection: FC = () => {
         company: formData.company,
         project_type: formData.projectType,
         message: formData.message,
-        to_name: 'Your Company', // You can customize this
+        to_name: 'Ringaro Software',
       };
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      // Set rate limit
+      localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString());
+      setCanSubmit(false);
+      setTimeRemaining(RATE_LIMIT_DURATION / 1000);
 
       setSubmitStatus('success');
       setShowStatusMessage(true);
@@ -68,20 +128,19 @@ export const ContactSection: FC = () => {
         email: '',
         company: '',
         projectType: '',
-        message: ''
+        message: '',
+        honeypot: ''
       });
 
-      // Hide success message after 3 seconds
       setTimeout(() => {
         setShowStatusMessage(false);
         setSubmitStatus('idle');
       }, 3000);
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
       setShowStatusMessage(true);
 
-      // Hide error message after 5 seconds
       setTimeout(() => {
         setShowStatusMessage(false);
         setSubmitStatus('idle');
@@ -163,6 +222,18 @@ export const ContactSection: FC = () => {
                 className="w-full px-4 py-4 bg-gray-50 border-0 rounded-xl text-gray-900 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all"
               />
 
+              {/* Honeypot field - hidden from users */}
+              <input
+                type="text"
+                name="honeypot"
+                value={formData.honeypot}
+                onChange={handleInputChange}
+                tabIndex={-1}
+                autoComplete="off"
+                style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
+                aria-hidden="true"
+              />
+
               <select
                 name="projectType"
                 value={formData.projectType}
@@ -204,6 +275,14 @@ export const ContactSection: FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                   Failed to send message. Please try again or email us directly.
+                </div>
+              )}
+              {!canSubmit && timeRemaining > 0 && (
+                <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-xl flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Please wait {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')} before submitting again.
                 </div>
               )}
 
@@ -252,23 +331,8 @@ export const ContactSection: FC = () => {
                   className="grayscale"
                 />
 
-                <Marker position={londonCoords} icon={londonIcon}>
-                  <Popup>
-                    <div className="text-center p-2">
-                      <h3 className="font-semibold text-gray-900">London Office</h3>
-                      <p className="text-sm text-gray-600">123 Tech Street, London EC1A 1BB</p>
-                    </div>
-                  </Popup>
-                </Marker>
-
-                <Marker position={timisoaraCoords} icon={timisoaraIcon}>
-                  <Popup>
-                    <div className="text-center p-2">
-                      <h3 className="font-semibold text-gray-900">Timișoara Office</h3>
-                      <p className="text-sm text-gray-600">Strada Titus Andronic 1, Timișoara 300254</p>
-                    </div>
-                  </Popup>
-                </Marker>
+                <Marker position={londonCoords} icon={londonIcon} />
+                <Marker position={timisoaraCoords} icon={timisoaraIcon} />
               </MapContainer>
             </div>
 
