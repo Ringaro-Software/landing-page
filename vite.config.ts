@@ -5,7 +5,7 @@ declare const process: {
   cwd(): string;
 };
 
-const DEFAULT_BASE_URL = '/';
+const DEFAULT_BASE_URL = '/landing-page/';
 const DEFAULT_PORT = 3000;
 
 // https://vitejs.dev/config/
