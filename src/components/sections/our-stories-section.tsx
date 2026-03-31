@@ -6,7 +6,7 @@ const portfolioProjects = [
   {
     title: 'AI-Powered Logistics Platform',
     clientName: 'M.A.R.S.',
-    clientLogo: 'https://marsapp.ai/images/logo.png',
+    clientLogo: 'https://marsapp.ai/assets/logo.png',
     isComposite: true,
     description: 'Complete fleet management and freight marketplace connecting carriers with shippers for any cargo size across Europe.',
     technologies: ['React', 'NestJS', 'AWS', 'Docker', 'AI/ML', 'AI Agent'],
@@ -56,14 +56,14 @@ const portfolioProjects = [
 
 // Partner logos
 const partners = [
-  { name: 'M.A.R.S.', logo: 'https://marsapp.ai/images/logo.png', isComposite: true, isText: false },
+  { name: 'M.A.R.S.', logo: 'https://marsapp.ai/assets/logo.png', isComposite: true, isText: false },
   { name: 'MyLodge', logo: 'https://ja-ic.com/assets/img/Portfolio/MyLODGE_logo_PNG.png', isComposite: false, isText: false },
   { name: 'Carbonify', logo: 'https://carbonify-prod-tc-asset-uploads.s3-eu-central-1.amazonaws.com/carbonify/carbonify.svg', isComposite: false, isText: false },
   { name: 'Spectrum', logo: null, isComposite: false, isText: true },
   { name: 'BogoExpress', logo: 'https://www.bogoexpress.ro/logo.svg', isComposite: false, isText: false },
   { name: 'Thinslices', logo: '/images/logos/thinslices-logo.png', isComposite: false, isText: false },
   { name: 'JA-IC', logo: 'https://ja-ic.com/assets/img/jaicalt.png', isComposite: false, isText: false },
-  { name: 'M.A.R.S.', logo: 'https://marsapp.ai/images/logo.png', isComposite: true, isText: false },
+  { name: 'M.A.R.S.', logo: 'https://marsapp.ai/assets/logo.png', isComposite: true, isText: false },
   { name: 'MyLodge', logo: 'https://ja-ic.com/assets/img/Portfolio/MyLODGE_logo_PNG.png', isComposite: false, isText: false },
   { name: 'Carbonify', logo: 'https://carbonify-prod-tc-asset-uploads.s3-eu-central-1.amazonaws.com/carbonify/carbonify.svg', isComposite: false, isText: false },
   { name: 'Spectrum', logo: null, isComposite: false, isText: true },
