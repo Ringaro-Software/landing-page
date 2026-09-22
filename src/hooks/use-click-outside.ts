@@ -1,4 +1,4 @@
-import { useEffect, type RefObject } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 
 export const useClickOutside = (callback: () => void, ...refs: Array<RefObject<HTMLElement | null | undefined>>) => {
   const handleClick = (event: MouseEvent) => {
@@ -14,9 +14,14 @@ export const useClickOutside = (callback: () => void, ...refs: Array<RefObject<H
     }
   };
 
-  useEffect(() => {
-    document.addEventListener('click', handleClick, true);
+  // Keeps the listener subscribed once while always calling the latest callback and refs
+  const handleClickRef = useRef(handleClick);
+  handleClickRef.current = handleClick;
 
-    return () => document.removeEventListener('click', handleClick, true);
+  useEffect(() => {
+    const listener = (event: MouseEvent) => handleClickRef.current(event);
+    document.addEventListener('click', listener, true);
+
+    return () => document.removeEventListener('click', listener, true);
   }, []);
 };
