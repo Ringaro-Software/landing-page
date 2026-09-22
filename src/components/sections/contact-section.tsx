@@ -286,12 +286,12 @@ export const ContactSection: FC = () => {
 
               <button
                 type="submit"
-                disabled={isSubmitting || submitStatus === 'success'}
+                disabled={isSubmitting || submitStatus === 'success' || !canSubmit}
                 className={`w-full px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 transform focus:outline-none focus:ring-2 focus:ring-blue-500/20 shadow-lg disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 ${
                   submitStatus === 'success'
                     ? 'bg-green-500 text-white'
                     : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white hover:scale-[1.02] shadow-blue-600/25'
-                } ${isSubmitting ? 'opacity-50' : ''}`}
+                } ${isSubmitting || (!canSubmit && submitStatus !== 'success') ? 'opacity-50' : ''}`}
               >
                 {submitStatus === 'success' ? (
                   <>
