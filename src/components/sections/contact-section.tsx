@@ -1,5 +1,5 @@
 import { type FC, useState, FormEvent, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, AttributionControl } from 'react-leaflet';
 import { Icon, LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import emailjs from '@emailjs/browser';
@@ -325,11 +325,12 @@ export const ContactSection: FC = () => {
                 dragging={false}
               >
                 <TileLayer
-                  url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-                  className="grayscale"
+                  url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+                  attribution="&copy; Esri"
                 />
 
                 <Marker position={timisoaraCoords} icon={timisoaraIcon} />
+                <AttributionControl position="bottomright" prefix={false} />
               </MapContainer>
             </div>
 
