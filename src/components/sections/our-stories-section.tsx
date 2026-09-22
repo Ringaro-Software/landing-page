@@ -6,7 +6,7 @@ const portfolioProjects = [
   {
     title: 'AI-Powered Logistics Platform',
     clientName: 'M.A.R.S.',
-    clientLogo: 'https://marsapp.ai/assets/logo.png',
+    clientLogo: '/images/logos/mars-logo.png',
     isComposite: true,
     description: 'Complete fleet management and freight marketplace connecting carriers with shippers for any cargo size across Europe.',
     technologies: ['React', 'NestJS', 'AWS', 'Docker', 'AI/ML', 'AI Agent'],
@@ -19,7 +19,7 @@ const portfolioProjects = [
   {
     title: 'Premium Tiny House Network Platform',
     clientName: 'MyLodge',
-    clientLogo: 'https://ja-ic.com/assets/img/Portfolio/MyLODGE_logo_PNG.png',
+    clientLogo: '/images/logos/mylodge-logo.png',
     description: 'Ultra-modern tiny house booking platform connecting travelers with sustainable nature getaways across Europe.',
     technologies: ['Astro', 'NestJS', 'PostgreSQL', 'Flutter', 'IoT'],
     image: '/images/logos/MYLODGE.jpg',
@@ -31,7 +31,7 @@ const portfolioProjects = [
   {
     title: 'THG Quota Trading Platform',
     clientName: 'Carbonify',
-    clientLogo: 'https://carbonify-prod-tc-asset-uploads.s3-eu-central-1.amazonaws.com/carbonify/carbonify.svg',
+    clientLogo: '/images/logos/carbonify-logo.svg',
     description: 'Digital platform enabling electric vehicle owners to monetize their environmental impact through THG quota trading.',
     technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'AWS'],
     image: '/images/logos/carbonify.png',
@@ -56,18 +56,18 @@ const portfolioProjects = [
 
 // Partner logos
 const partners = [
-  { name: 'M.A.R.S.', logo: 'https://marsapp.ai/assets/logo.png', isComposite: true, isText: false },
-  { name: 'MyLodge', logo: 'https://ja-ic.com/assets/img/Portfolio/MyLODGE_logo_PNG.png', isComposite: false, isText: false },
-  { name: 'Carbonify', logo: 'https://carbonify-prod-tc-asset-uploads.s3-eu-central-1.amazonaws.com/carbonify/carbonify.svg', isComposite: false, isText: false },
+  { name: 'M.A.R.S.', logo: '/images/logos/mars-logo.png', isComposite: true, isText: false },
+  { name: 'MyLodge', logo: '/images/logos/mylodge-logo.png', isComposite: false, isText: false },
+  { name: 'Carbonify', logo: '/images/logos/carbonify-logo.svg', isComposite: false, isText: false },
   { name: 'Spectrum', logo: null, isComposite: false, isText: true },
   { name: 'Thinslices', logo: '/images/logos/thinslices-logo.png', isComposite: false, isText: false },
-  { name: 'JA-IC', logo: 'https://ja-ic.com/assets/img/jaicalt.png', isComposite: false, isText: false },
-  { name: 'M.A.R.S.', logo: 'https://marsapp.ai/assets/logo.png', isComposite: true, isText: false },
-  { name: 'MyLodge', logo: 'https://ja-ic.com/assets/img/Portfolio/MyLODGE_logo_PNG.png', isComposite: false, isText: false },
-  { name: 'Carbonify', logo: 'https://carbonify-prod-tc-asset-uploads.s3-eu-central-1.amazonaws.com/carbonify/carbonify.svg', isComposite: false, isText: false },
+  { name: 'JA-IC', logo: '/images/logos/jaic-logo.png', isComposite: false, isText: false },
+  { name: 'M.A.R.S.', logo: '/images/logos/mars-logo.png', isComposite: true, isText: false },
+  { name: 'MyLodge', logo: '/images/logos/mylodge-logo.png', isComposite: false, isText: false },
+  { name: 'Carbonify', logo: '/images/logos/carbonify-logo.svg', isComposite: false, isText: false },
   { name: 'Spectrum', logo: null, isComposite: false, isText: true },
   { name: 'Thinslices', logo: '/images/logos/thinslices-logo.png', isComposite: false, isText: false },
-  { name: 'JA-IC', logo: 'https://ja-ic.com/assets/img/jaicalt.png', isComposite: false, isText: false },
+  { name: 'JA-IC', logo: '/images/logos/jaic-logo.png', isComposite: false, isText: false },
 ];
 
 export const OurStoriesSection: FC = () => {
