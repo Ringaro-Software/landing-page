@@ -17,13 +17,11 @@ const createCustomIcon = (color: string) => new Icon({
   popupAnchor: [0, -32]
 });
 
-const londonIcon = createCustomIcon('#2563eb'); // blue-600
 const timisoaraIcon = createCustomIcon('#2563eb'); // blue-600
 
 // Coordinates
-const londonCoords: LatLngTuple = [51.5074, -0.1278];
 const timisoaraCoords: LatLngTuple = [45.7494, 21.2290];
-const center: LatLngTuple = [48.5, 10.5]; // Centered between the two cities
+const center: LatLngTuple = timisoaraCoords;
 
 const RATE_LIMIT_KEY = 'contact_form_last_submit';
 const RATE_LIMIT_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
@@ -331,7 +329,6 @@ export const ContactSection: FC = () => {
                   className="grayscale"
                 />
 
-                <Marker position={londonCoords} icon={londonIcon} />
                 <Marker position={timisoaraCoords} icon={timisoaraIcon} />
               </MapContainer>
             </div>
@@ -363,9 +360,8 @@ export const ContactSection: FC = () => {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900 text-lg mb-3">Our Offices</h4>
+                    <h4 className="font-semibold text-gray-900 text-lg mb-3">Our Office</h4>
                     <div className="space-y-2">
-                      <p className="font-medium text-gray-800">🇬🇧 London, UK</p>
                       <p className="font-medium text-gray-800">🇷🇴 Timișoara, Romania</p>
                     </div>
                   </div>
