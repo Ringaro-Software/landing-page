@@ -5,7 +5,7 @@ import { SectionId } from '../types/section-id';
 export type GoToSectionFn = (sectionId: SectionId) => void;
 
 export const useGoToSection = (): GoToSectionFn => {
-  const { hash, search } = useLocation();
+  const { hash, search, key } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const useGoToSection = (): GoToSectionFn => {
     }, 50);
 
     return () => clearTimeout(timeoutId);
-  }, [hash]);
+  }, [hash, key]);
 
   const goToSection: GoToSectionFn = (sectionId) => {
     if (sectionId === SectionId.Hero) {
@@ -37,6 +37,14 @@ export const useGoToSection = (): GoToSectionFn => {
   };
 
   return goToSection;
+};
+
+// replaceState instead of navigate: navigating would trigger the scroll-to-hash effect mid-scroll
+const syncUrlHash = (sectionId: SectionId) => {
+  const newHash = sectionId === SectionId.Hero ? '' : `#${sectionId}`;
+  if (window.location.hash === newHash) return;
+  const { pathname, search } = window.location;
+  window.history.replaceState(window.history.state, '', `${pathname}${search}${newHash}`);
 };
 
 export const useCurrentSectionId = (): SectionId => {
@@ -61,6 +69,7 @@ export const useCurrentSectionId = (): SectionId => {
         // Only update if we found a visible section with at least 20% visibility
         if (mostVisibleSection && maxRatio > 0.2) {
           setCurrentSection(mostVisibleSection);
+          syncUrlHash(mostVisibleSection);
         }
       },
       {
